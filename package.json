@@ -1,0 +1,26 @@
+{
+  "name": "coffeemap.berlin",
+  "version": "1.0.0",
+  "description": "This repository is a starter template intended to be forked and used for your own website. The focus here is on having a slim, working, full-stack website which can be (relatively) easily built, tested, and deployed on Google App Engine using GitHub actions. It is meant intended primarily for students of the Foundations of Software Engineering Course run in the spring of 2021 at CODE University of Applied Sciences, based in Berlin, Germany, but run remotely due to the pandemic. This README assume that the reader already has a basic familiarity with a broad range of topics and technologies touched on in that class, so it lacks explanation, but may occasionally make reference to something done in that class.",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "postcss app/static/styles.css -o app/static/build/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukas-menzel/coffee.berlin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukas-menzel/coffee.berlin/issues"
+  },
+  "homepage": "https://github.com/lukas-menzel/coffee.berlin#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.9",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.1.1"
+  }
+}
