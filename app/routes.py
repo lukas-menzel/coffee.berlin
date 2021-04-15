@@ -3,10 +3,11 @@ from flask import render_template, redirect, url_for, flash, get_flashed_message
 from app.models import User, Place, PlacesToEndUser, OpeningHours
 from app.forms import RegisterForm, LoginForm
 from app import db
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 
 @app.route('/')
+@login_required
 def index():
     return render_template('index.html', page_title="My great website")
 
@@ -16,9 +17,11 @@ def register_page():
     form = RegisterForm()
     if form.validate_on_submit():
         user_to_create = User(first_name=form.first_name.data, email=form.email.data, password=form.password_hash.data, data_privacy_accepted=form.data_privacy_accepted.data, email_marketing_accepted=form.email_marketing_accepted.data)
-        print(user_to_create.password_hash)
         db.session.add(user_to_create)
         db.session.commit()
+
+        login_user(user_to_create)
+        flash(f'Success! Account created successfully. You are now logged in as: {user_to_create.first_name} ', category='success')
         return redirect(url_for('index'))
     if form.errors != {}:  # If there are no errors from validations
         for err_msg in form.errors.values():

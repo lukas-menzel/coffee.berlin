@@ -118,5 +118,16 @@
     </div>
   </div>
 </div>
+<form id="create-place-form" onsubmit="createNewPlace(event.preventDefault())">
+  <label for="name">Name: </label>
+  <input type="text" name="name" id="name" required>
+  <label for="name">Street name and house number: </label>
+  <input type="text" name="street_house_number" id="street_house_number" required>
+  <label for="name">Postcode: </label>
+  <input type="text" name="postcode" id="postcode" required>
+  <input type="submit" value="Submit">
+</form>
 
+<button onclick="getPlaces()"> Get Data </button>
+<div id="main"></div>
 {% endblock %}  
