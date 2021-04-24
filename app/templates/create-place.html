@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="relative bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto min-h-1/4 flex justify-center	items-center">
+        <div class="font-light text-3xl">Hi {{ current_user.first_ }}! Let’s get started listing your café.</div>
+    </div>
+    <div class="max-w-7xl mx-auto min-h-1/4 flex justify-center">
+        <form id="create-place" class="w-3/4 -mx-10" >
+            <div class="tab">
+                <div class="font-bold text-sm uppercase pb-1.5">1. step</div>
+                <h3 class="font-light text-xl pb-2">What is the name of the Café?<h3>
+                <input type="text" name="name" id="name" max="255" required class="rounded-full appearance-none rounded-none relative w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Name of the Café" oninput="this.class = ''">
+            </div>
+              
+            <div class="tab" >
+                <div class="font-bold text-sm uppercase pb-1.5">2. step</div>
+                <h3 class="font-light text-xl pb-2">What is the address of the Café?<h3>
+                    <input  type="text" name="street_house_number" id="street_house_number" max="255" required class="rounded-full appearance-none rounded-none relative w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Address" oninput="this.class = ''">
+                    <div class="block w-2/4 float-left pt-2 pr-1"><input type="number" name="postcode" id="postcode" required min="5" class="w-full rounded-full appearance-none rounded-none relative px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Postcode" oninput="this.class = ''"></div>
+                    <div class="block w-2/4 float-left pt-2 pr-1"> <input type="text" name="city" id="city" max="255" required class="w-full rounded-full appearance-none rounded-none relative px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="City" oninput="this.class = ''"></div>
+            </div>
+              <div class="tab">
+                <div class="font-bold text-sm uppercase pb-1.5">3. step</div>
+                <h3 class="font-light text-xl pb-2">Give us some more details.<h3>
+                <input  type="tel" name="phone_number" id="phone_number" max="20" class="rounded-full appearance-none rounded-none relative w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Phone number" oninput="this.class = ''">
+                <input  type="email" name="email_adress" id="email_adress" max="255"  class="rounded-full appearance-none rounded-none relative w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Website url" oninput="this.class = ''">
+                <input  type="url" name="website_url" id="website_url" max="500"  class="rounded-full appearance-none rounded-none relative w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Website url" oninput="this.class = ''">
+                <input  type="url" name="facebook_url" id="facebook_url" max="500" class="rounded-full appearance-none rounded-none relative w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Facebook url" oninput="this.class = ''">
+                <input  type="url" name="instagram_url" id="instagram_url" max="500" class="rounded-full appearance-none rounded-none relative w-full px-3 py-2 my-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Instagram url" oninput="this.class = ''">
+            </div>
+              
+              <div class="tab">
+                <div class="font-bold text-sm uppercase pb-1.5">4. step</div>
+                <h3 class="font-light text-xl pb-2">What is the café offering?<h3>
+                <label for="wifi_available">
+                    <div>Wifi available?</div>
+                    <input id='wifi_available_hidden' type='hidden' value='0' name='wifi_available'>
+                <input  type="checkbox" value="1" name="wifi_available" id="wifi_available"  oninput="this.class = ''"><span> yes</span>
+            </label>
+                <label for="toilet_available">  
+                    <div>Toilet available?</div>
+                    <input id='toilet_available_hidden' type='hidden' value='0' name='toilet_available'>
+                <input  type="checkbox" value="1" name="toilet_available" id="toilet_available" oninput="this.class = ''"><span> yes</span>
+            </label>  
+            <label for="power_slots_available">  
+                <div>Power slots available?</div>
+                <input id='power_slots_available_hidden' type='hidden' value='0' name='power_slots_available'>
+            <input  type="checkbox" value="1" name="power_slots_available" id="power_slots_available" oninput="this.class = ''"><span> yes</span>
+        </label>   
+        <label for="alcohol_available">  
+            <div>Alcohol available?</div>
+            <input id='alcohol_available_hidden' type='hidden' value='0' name='alcohol_available'>
+        <input  type="checkbox" value="1" name="alcohol_available" id="alcohol_available" oninput="this.class = ''"><span> yes</span>
+    </label>  
+    <label for="vegan_alternatives_available">  
+        <div>Vegan alternatives available?</div>
+        <input id='vegan_alternatives_hidden' type='hidden' value='0' name='vegan_alternatives_available'>
+        <input  type="checkbox" value="1" name="vegan_alternatives_available" id="vegan_alternatives_available" oninput="this.class = ''"><span> yes</span>
+</label>  
+<label for="laptops_allowed">  
+    <div>Laptops allowed?</div>
+    <input id='laptops_allowed_hidden' type='hidden' value='0' name='laptops_allowed'>
+<input  type="checkbox" value="1" name="laptops_allowed" id="laptops_allowed" oninput="this.class = ''"><span> yes</span>
+</label>  
+            </div>
+            <div class="tab">
+                <div class="font-bold text-sm uppercase pb-1.5">5. step</div>
+                <h3 class="font-light text-xl pb-2">Further information<h3>
+                <label for="open_for_takeaway">
+                    <div>Is the café open for takeaway?</div>
+                    <input id='open_for_takeaway_hidden' type='hidden' value='0' name='open_for_takeaway'>
+                <input  type="checkbox" value="1" name="open_for_takeaway" id="open_for_takeaway"  oninput="this.class = ''"><span> yes</span>
+            </label>
+                <label for="open_for_delivery">  
+                    <div>Open for delivery?</div>
+                <input id='open_for_delivery_hidden' type='hidden' value='0' name='open_for_delivery'>
+                <input  type="checkbox" value="1" name="open_for_delivery" id="open_for_delivery" oninput="this.class = ''"><span> yes</span>
+            </label>  
+            </div>
+            <div class="tab">
+                <div class="font-bold text-sm uppercase pb-1.5">6. step</div>
+                <h3 class="font-light text-xl pb-2">How expensive is a coffee<h3>
+                <input  type="number" name="price_espresso" id="price_espresso" min="0.00" step="0.01" pattern="^\d+(\.|\,)\d{2}$" class="rounded-full appearance-none rounded-none relative w-2/4 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="How expensive is a espresso? (in Euro)" oninput="this.class = ''"><div>€</div>
+                <input  type="number" name="price_filter_coffee" id="price_filter_coffee" min="0.00" step="0.01" pattern="^\d+(\.|\,)\d{2}$" class="rounded-full appearance-none rounded-none relative w-2/4 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="How expensive is a filter coffee? (in Euro)" oninput="this.class = ''"><div>€</div>
+                <input  type="number" name="price_cappuccino" id="price_cappuccino" min="0.00" step="0.01" pattern="^\d+(\.|\,)\d{2}$" class="rounded-full appearance-none rounded-none relative w-2/4 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="How expensive is a cappuccino? (in Euro)" oninput="this.class = ''"><div>€</div>
+            </div>
+            <div class="tab">
+                <div class="font-bold text-sm uppercase pb-1.5">7. step</div>
+                <h3 class="font-light text-xl pb-2">Add the wifi credentials<h3>
+                <input  type="text" name="wifi_network_name" id="wifi_network_name" class="rounded-full appearance-none rounded-none relative w-2/4 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Wifi network name" oninput="this.class = ''">
+                <input  type="password" name="wifi_network_password" id="wifi_network_password" class="rounded-full appearance-none rounded-none relative w-2/4 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Wifi network password" oninput="this.class = ''">
+            </div>
+              <div class="">
+                <div style="float:right;">
+                  <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="bg-indigo-600 rounded-full text-white p-4 mt-2">Previous step</button>
+                  <button type="button" id="nextBtn" onclick="nextPrev(1)" class="bg-indigo-600 rounded-full text-white p-4 mt-2">Next step</button>
+                  <input type="submit" id="submit" value="Submit" class="bg-indigo-600 rounded-full text-white p-4 mt-2">
+                </div>
+              </div>
+              
+              <!-- Circles which indicates the steps of the form: -->
+              <div id="invalid" class="pt-2 text-red-700"></div>
+
+              <div style="text-align:center;margin-top:40px;" class="flex justify-center w-full">
+                <span class="step bg-indigo-100"></span>
+                <span class="step bg-indigo-100"></span>
+                <span class="step bg-indigo-100"></span>
+                <span class="step bg-indigo-100"></span>
+                <span class="step bg-indigo-100"></span>
+                <span class="step bg-indigo-100"></span>
+                <span class="step bg-indigo-100"></span>
+
+
+
+              </div>
+        </form>
+    </div>
+</div>
+<script>
+      /*Multi-step add place */ 
+  var currentTab = 0; // Current tab is set to be the first tab (0)
+  showTab(currentTab); // Display the current tab
+  
+  function showTab(n) {
+    // This function will display the specified tab of the form ...
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    // ... and fix the Previous/Next buttons:
+    if (n == 0) {
+      document.getElementById("prevBtn").style.display = "none";
+      document.getElementById("submit").style.display = "none";
+    } else {
+      document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+      document.getElementById("submit").style.display = "inline";
+      document.getElementById("nextBtn").style.display = "none";
+    } else {
+      document.getElementById("nextBtn").innerHTML = "Next step";
+      document.getElementById("submit").style.display = "none";
+
+    }
+    // ... and run a function that displays the correct step indicator:
+    fixStepIndicator(n)
+  }
+  
+  function nextPrev(n) {
+    // This function will figure out which tab to display
+    var x = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (n == 1 && !validateForm()) return false;
+    // Hide the current tab:
+    x[currentTab].style.display = "none";
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + n;
+    // if you have reached the end of the form... :
+    if (currentTab >= x.length) {
+      //...the form gets submitted:
+      document.getElementById("create-place").submit();
+      return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+  }
+  
+  function validateForm() {
+    // This function deals with validation of the form fields
+    var x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < y.length; i++) {
+      // If a field is empty...#
+      if (!y[i].checkValidity()) {
+        document.getElementById("invalid").innerHTML = y[i].validationMessage;
+        valid = false
+      }
+      
+    
+    }
+   
+    // If the valid status is true, mark the step as finished and valid:
+    if (valid) {
+      document.getElementsByClassName("step")[currentTab].className += " finish bg-indigo-600";
+      document.getElementById("invalid").innerHTML = "";
+    }
+    return valid; // return the valid status
+  
+  }
+  
+  function fixStepIndicator(n) {
+    // This function removes the "active" class of all steps...
+    var i, x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+      x[i].className = x[i].className.replace(" active", "");
+    }
+    //... and adds the "active" class to the current step:
+    x[n].className += " active";
+  }
+  
+</script>
+{% endblock %}

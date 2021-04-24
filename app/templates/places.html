@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="relative bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto min-h-1/4 flex justify-center	items-center">
+        <div class="content-center text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"><h1>All café places</h1></div>
+    </div>
+    <div class="max-w-7xl mx-auto min-h-1/4 flex justify-center	items-center">
+        <div class="content-center tracking-tight" id="places">
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}  
+<style>
+.container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    margin: 1rem;
+    border: 1px solid gray;
+  }
+  @media screen and (min-width: 600px) {
+    .card {
+      flex: 1 1 calc(50% - 2rem);
+    }
+  }
+  
+  @media screen and (min-width: 900px) {
+    .card {
+      flex: 1 1 calc(33% - 2rem);
+    }
+  }
+</style>  

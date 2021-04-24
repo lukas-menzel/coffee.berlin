@@ -1,8 +1,6 @@
 from app import db, login_manager
 from app import bcrypt
 from flask_login import UserMixin
-from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
 
 
 @login_manager.user_loader
@@ -59,17 +57,17 @@ class Place(db.Model):
     website_url = db.Column (db.String(length=500))
     facebook_url = db.Column (db.String(length=500))
     instagram_url = db.Column (db.String(length=500))
-    wifi_available = db.Column (db.String(), default=0)
-    toilet_available = db.Column (db.String(), default=0)
-    power_slots_available = db.Column (db.String(), default=0)
-    alcohol_available = db.Column (db.String(), default=0)
-    vegan_alternatives_available = db.Column (db.String(), default=0)
-    laptops_allowed = db.Column (db.String(), default=0)
-    open_for_takeaway = db.Column (db.String(), default=0)
-    open_for_delivery = db.Column (db.String(), default=0)
-    price_espresso = db.Column (db.String())
-    price_filter_coffee = db.Column (db.String())
-    price_cappuccino = db.Column (db.String())
+    wifi_available = db.Column (db.Boolean(), default=0)
+    toilet_available = db.Column (db.Boolean(), default=0)
+    power_slots_available = db.Column (db.Boolean(), default=0)
+    alcohol_available = db.Column (db.Boolean(), default=0)
+    vegan_alternatives_available = db.Column (db.Boolean(), default=0)
+    laptops_allowed = db.Column (db.Boolean(), default=0)
+    open_for_takeaway = db.Column (db.Boolean(), default=0)
+    open_for_delivery = db.Column (db.Boolean(), default=0)
+    price_espresso = db.Column (db.Numeric(4,2), default=0)
+    price_filter_coffee = db.Column (db.Numeric(4,2))
+    price_cappuccino = db.Column (db.Numeric(4,2))
     wifi_network_name = db.Column (db.String (length=255))
     wifi_network_password = db.Column (db.String(length=255))
     food_options = db.Column (db.String(length=255))
@@ -109,8 +107,7 @@ class Review(db.Model):
     helpful_questions = db.Column(db.Boolean())
 
 
-if __name__=='__main__':
-    manager.run()
+
 
 
 

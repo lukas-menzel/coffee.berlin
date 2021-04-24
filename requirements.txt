@@ -24,3 +24,6 @@ Flask-Assets
 Flask-WTF
 email_validator
 Flask-Bcrypt
+jwt
+uuid
+flask_script
