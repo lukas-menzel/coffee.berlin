@@ -80,6 +80,9 @@ fetch('/place')
         data.places.forEach((place) => {
           // Create a div with a card class
           const card = document.createElement('div')
+          var a = document.createElement('a');
+          a.setAttribute('href','/place/link');
+          link = place.id
           card.setAttribute('class', "card border border-black m-4")
         
           const h1 = document.createElement('h1')
@@ -92,6 +95,7 @@ fetch('/place')
           div.textContent = place.postcode
         
           // Append the cards to the container element
+          container.appendChild(a)
           container.appendChild(card)
         
           // Each card will contain an h1 and a p

@@ -61,6 +61,12 @@ def logout_page():
     flash("You have been logged out!", category='info')
     return redirect(url_for("index"))
 
+@app.route("/profile/<id>")
+@login_required
+def user(id):
+    user = User.query.filter_by(id=id).first_or_404()
+
+    return render_template("profile.html", user=user)
 
 @app.route('/place', methods=['GET'])
 def get_all_places():
@@ -104,8 +110,8 @@ def get_all_places():
     return jsonify({'places' : output})
 
 
-@app.route('/place/<id>', methods=['GET'])
-def get_single_place():
+@app.route('/place/<int:id>', methods=['GET'])
+def get_single_place(id):
 
     place = Place.query.filter_by().first()
 

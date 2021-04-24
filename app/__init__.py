@@ -9,7 +9,7 @@ import jwt
 import datetime
 from functools import wraps
 from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 
 
 
@@ -18,8 +18,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/app.db'
 app.config['SECRET_KEY'] = '5bec7e1b45fb18a457ea033f'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-manager = Manager (app)
-manager.add_command('db', MigrateCommand)
 
 
 bcrypt = Bcrypt(app)
