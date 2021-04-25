@@ -27,3 +27,4 @@ Flask-Bcrypt
 jwt
 uuid
 flask_script
+psycopg2-binary

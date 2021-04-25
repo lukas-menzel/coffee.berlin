@@ -14,7 +14,7 @@ from flask_migrate import Migrate
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/flask'
 app.config['SECRET_KEY'] = '5bec7e1b45fb18a457ea033f'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
