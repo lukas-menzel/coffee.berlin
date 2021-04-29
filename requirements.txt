@@ -30,4 +30,4 @@ flask_script
 psycopg2-binary
 gunicorn==20.1.0
 psycopg2==2.8.6
-
+python-dotenv

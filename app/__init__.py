@@ -19,8 +19,8 @@ app = Flask(__name__)
 if os.environ.get('DATABASE_URL'):
   app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 else:
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/flask'
-app.config['SECRET_KEY'] = '5bec7e1b45fb18a457ea033f'
+  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+SECRET_KEY = app.config['SECRET_KEY'] = '5bec7e1b45fb18a457ea033f'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
