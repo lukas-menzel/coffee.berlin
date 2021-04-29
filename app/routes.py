@@ -6,6 +6,7 @@ from app import db
 from flask_login import login_user, logout_user, login_required
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
+import time
 
 @app.route('/')
 @login_required
@@ -178,3 +179,7 @@ def delete_place():
     db.session.commit()
 
     return jsonify({'message' : 'The user has been deleted.'})
+
+@app.route('/time')
+def get_current_time():
+    return {'time': time.time()}
