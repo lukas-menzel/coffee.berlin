@@ -42,7 +42,7 @@ create_place_Form.addEventListener("submit", async (e) => {
   const jsonObject = {...form_data_serialized, sendToSelf: form_data_serialized.sendToSelf ? true : false,};
 
   try {
-    const response = await fetch("/place", {
+    const response = await fetch("/api/place", {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json'
@@ -66,7 +66,7 @@ const container = document.createElement('div')
 container.setAttribute('class', 'container')
 places.appendChild(container)
 
-fetch('/place')
+fetch('/api/place')
   .then(
     function (response) {
       if (response.status !== 200) {

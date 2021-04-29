@@ -17,7 +17,7 @@ export const PlacesForm = ({ onNewPlace }) => {
         <Button
           onClick={async () => {
             const place = { name };
-            const response = await fetch("/place", {
+            const response = await fetch("/api/place", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"

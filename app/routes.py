@@ -9,10 +9,12 @@ from flask_migrate import Migrate, MigrateCommand
 import time
 
 @app.route('/')
-@login_required
 def index():
-    return render_template('index.html', page_title="Coffeemap Berlin")
-
+    return app.send_static_file('index.html')
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
+    
 @app.route('/places')
 def places():
     return render_template('places.html', page_title="Places")
@@ -69,7 +71,7 @@ def user(id):
 
     return render_template("profile.html", user=user)
 
-@app.route('/place', methods=['GET'])
+@app.route('/api/place', methods=['GET'])
 def get_all_places():
 
     places = Place.query.all()
@@ -111,7 +113,7 @@ def get_all_places():
     return jsonify({'places' : output})
 
 
-@app.route('/place/<int:id>', methods=['GET'])
+@app.route('/api/place/<int:id>', methods=['GET'])
 def get_single_place(id):
 
     place = Place.query.filter_by().first()
@@ -145,7 +147,7 @@ def get_single_place(id):
 
     return jsonify({'place' : place_data})
 
-@app.route('/place', methods=['POST'])
+@app.route('/api/place', methods=['POST'])
 
 def create_place():
     data = request.get_json()
@@ -157,8 +159,9 @@ def create_place():
 
     return jsonify({'message' : 'New place created!'})
 
-@app.route('/place/<id>', methods=['PUT'])
+@app.route('/api/place/<id>', methods=['PUT'])
 def update_place():
+    #SELECT ALL FROM 
     place = Place.query.filter_by(id=id).first()
 
     if not place:
@@ -167,7 +170,7 @@ def update_place():
 
     return jsonify({'message' : 'The place has been updated.'})
 
-@app.route('/place/<id>', methods=['DELETE'])
+@app.route('/api/place/<id>', methods=['DELETE'])
 
 def delete_place():
     place = Place.query.filter_by(id=id).first()
@@ -180,6 +183,6 @@ def delete_place():
 
     return jsonify({'message' : 'The user has been deleted.'})
 
-@app.route('/time')
+@app.route('/api/time')
 def get_current_time():
     return {'time': time.time()}
